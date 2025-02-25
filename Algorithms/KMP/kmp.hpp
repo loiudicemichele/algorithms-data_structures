@@ -19,7 +19,7 @@ using namespace std;
 #include <vector>
 // Calculates the Longest Proper Prefix
 /*
- * A proper prefix is prefix that is both prefix and suffix of a word. 
+ * A proper prefix is prefix that is both prefix and suffix of a string. 
  */
 vector<int> calculate_lps(string s){
     vector<int> lms(s.length());
@@ -34,7 +34,7 @@ vector<int> calculate_lps(string s){
     return lms;
 }
 
-// sub is the string im verifying  
+// Sub is supposed to be the substring, the kmp checks that.
 int kmp(string s, string sub){
     vector<int> lms = calculate_lps(sub);
     int n = s.length();
@@ -45,6 +45,10 @@ int kmp(string s, string sub){
         else if ( j > 0 ) j = lms[j-1];
         else { i++; }
     }
+    /**
+     * If the substring is matched it returns the position where it stats.
+     * Otherwise it retuns -1.
+     **/
     if(j < m) return -1;
     else return i-j;
 }

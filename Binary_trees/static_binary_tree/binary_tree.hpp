@@ -175,7 +175,7 @@ typename binary_tree<T>::position binary_tree<T>::get_parent(position p) const{
     return ((p-1)/2);
 }
 
-//Deletes a subtree from the list.
+//Deletes a subtree from the tree.
 template <class T>
 void binary_tree<T>::erase(position p){
     if(has_left_child(p)) erase(get_left_child(p));

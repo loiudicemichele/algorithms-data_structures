@@ -172,7 +172,7 @@ typename binary_tree<T>::nodeptr binary_tree<T>::get_parent(nodeptr n) const{
     return n->parent;
 } 
 
-//Deletes a sub-tree from the list.
+//Deletes a sub-tree from the tree.
 template <class T>
 void binary_tree<T>::erase(nodeptr n){
     //Unlinking the rest of the tree from the sub-tree.

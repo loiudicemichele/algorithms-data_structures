@@ -133,4 +133,34 @@ int count_subtrees(const binary_tree<int> &t, const int &k){
     count_subtrees(t,t.get_root(),k,sum);
     return sum;
 }
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+#include <vector>
+#include <cmath>
+/**
+ * The problems requests us to calculate the mean of a binary tree level, for each level of the tree.
+ */
+void calculate_sum_by_level(binary_tree<double> &tree, binary_tree<double>::position node,  vector<double> &mean_by_level, int level){
+    mean_by_level[level] += tree.read(node);
+    if(tree.has_left_child(node)) calculate_sum_by_level(tree, tree.get_left_child(node),mean_by_level,level+1);
+    if(tree.has_right_child(node)) calculate_sum_by_level(tree, tree.get_right_child(node),mean_by_level,level+1);
+}
+
+vector<double> calculate_mean_by_level(binary_tree<double> &tree){
+    vector<double> mean_by_level(tree.get_height());
+    // If the tree is empty, we do not compute anything.
+    if(tree.empty()) return mean_by_level;
+    // Otherwise we calculate the sum of the node for each level of the tree.
+    calculate_sum_by_level(tree, tree.get_root(),mean_by_level,0);
+    /**
+     * We calculate the mean of the level knowing that for the k-est level, the number of node is 2^k.
+     */
+    for(int i = 0; i < mean_by_level.size(); i++){
+        mean_by_level[i] /= pow(2,i);
+    }
+    // Returning the computated value.
+    return mean_by_level;
+}   
+
 #endif //FUNCTIONS

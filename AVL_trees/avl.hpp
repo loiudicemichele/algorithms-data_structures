@@ -15,6 +15,7 @@
 #define BINARY_SEARCH_TREE
 
 #include <iostream>
+#include "abstract_avl.hpp"
 using namespace std;
 
 template <class T> class AVL;
@@ -37,9 +38,9 @@ class tree_node{
 };
 
 template <class T>
-class AVL {
+class AVL : public abstract_avl_tree<T, tree_node<T>*> {
     public:
-        typedef tree_node<T>* nodeptr;
+    typedef typename abstract_avl_tree<T,tree_node<T>*>::position nodeptr;
         /*** Default Constructor ***/
         AVL();
         /*** Destructor ***/
@@ -416,12 +417,6 @@ typename AVL<T>::nodeptr AVL<T>::successor(nodeptr node) const{
     else return nullptr; //The node has the highest value
 } 
 
-
-
-
-
-
-
 template <class T>
 void AVL<T>::clear(nodeptr node){
     if(node == nullptr) return;
@@ -448,8 +443,6 @@ template <class T>
 int AVL<T>::size() const{
     return n_elements;
 }
-
-
 
 //Returns the root of the tree.
 template <class T>
@@ -478,7 +471,7 @@ typename AVL<T>::nodeptr AVL<T>::get_parent(nodeptr n) const{
     return n->parent;
 } 
 
-//Deletes a sub-tree from the list.
+//Deletes a sub-tree from the tree.
 template <class T>
 void AVL<T>::erase(nodeptr n){
     //Unlinking the rest of the tree from the sub-tree.
