@@ -15,6 +15,7 @@
 #define BINARY_SEARCH_TREE
 
 #include <iostream>
+#include "abstract_bst.hpp"
 using namespace std;
 
 template <class T> class BST;
@@ -35,9 +36,9 @@ class tree_node{
 };
 
 template <class T>
-class BST {
+class BST : public abstract_bst_tree<T, tree_node<T>*>{
     public:
-        typedef tree_node<T>* nodeptr;
+        typedef typename abstract_bst_tree<T, tree_node<T>*>::position nodeptr;
         /*** Default Constructor ***/
         BST();
         /*** Destructor ***/
@@ -325,7 +326,7 @@ typename BST<T>::nodeptr BST<T>::get_parent(nodeptr n) const{
     return n->parent;
 } 
 
-//Deletes a sub-tree from the list.
+//Deletes a sub-tree from the tree.
 template <class T>
 void BST<T>::erase(nodeptr n){
     //Unlinking the rest of the tree from the sub-tree.
