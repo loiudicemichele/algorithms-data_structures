@@ -47,7 +47,7 @@ int main(){
     cout << t.find(p5.first);
     t.insert(p3);
     cout << t;
-    cout << "Contiene: " << t.contains("eac");
+    cout << "Contains test: " << t.contains("eac");
     //cout << "Test: " <<t.find(p1.first);
     
     //t.insert(pair4);

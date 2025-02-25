@@ -76,7 +76,7 @@ class graph : public abstract_graph<graph_node<T>*>{
         void delete_edge(nodeptr,nodeptr,bool directional = false);  
         bool is_adjacent(nodeptr,nodeptr) const; // Returns true if the two nodes are adjacent.
         bool exist_node(nodeptr) const; // Retunds true if the node exist in the graph.
-        bool exist_edge(nodeptr,nodeptr) const; // Retruns true if the edge between two nodes exists.
+        bool exist_edge(nodeptr,nodeptr) const; // Returns true if the edge between two nodes exists.
         nodeptr get_node(position); // Returns a graph node.
         T read(nodeptr) const; // Reads the value of a node.
         void write(nodeptr,const T&); // Sets the value of a node.
@@ -84,17 +84,17 @@ class graph : public abstract_graph<graph_node<T>*>{
         //Utilities for alorithm
         void mark_node(nodeptr); // It sign a node as marked.
         void un_mark_node(nodeptr); // It sign a node as un-marked.
-        bool is_marked(nodeptr); // Retruns true if the node is marked.
+        bool is_marked(nodeptr); // Returns true if the node is marked.
         void unmark_all_nodes(); // Unmarks all nodes.
 
         void un_mark_edge(nodeptr,nodeptr); // It sign an edge as un-marked.
-        bool is_marked(nodeptr,nodeptr); // Retruns true if the edge is marked.
+        bool is_marked(nodeptr,nodeptr); // Returns true if the edge is marked.
         void mark_edge(nodeptr,nodeptr); // It sign an edge as marked.
         void unmark_all_edges(); // Unmarks all edges.
 
         int get_weight(nodeptr,nodeptr) const; //Returns the weight of a the edge between two nodes.
         void set_weight(nodeptr,nodeptr, int weight); // Sets the weight of an edge betweem two nodes.
-        int get_n_edges(nodeptr) const; // Retruns the number of edges of a node.
+        int get_n_edges(nodeptr) const; // Returns the number of edges of a node.
         nodeptr get_first_node() const; // Returns the first graph node.
         list<nodeptr> adjacent(nodeptr); // Returns the list of adjacent nodes.
 
@@ -350,7 +350,7 @@ bool graph<T>::exist_node(nodeptr node) const{
     return (get_position(node) != not_set);
 } 
 
-//Retruns true if the edge between two nodes exists.
+//Returns true if the edge between two nodes exists.
 template <class T>
 bool graph<T>::exist_edge(nodeptr n1,nodeptr n2) const{
     if(!(exist_node(n1) && exist_node(n2))) return false;
@@ -389,7 +389,7 @@ void graph<T>::un_mark_node(nodeptr node){
     node->marked = false;
 }
 
-//Retruns true if the node is marked.
+//Returns true if the node is marked.
 template <class T>
 bool graph<T>::is_marked(nodeptr node){
     return node->is_marked();
@@ -411,7 +411,7 @@ void graph<T>::un_mark_edge(nodeptr n1,nodeptr n2){
     adjacent_matrix[get_position(n1)][get_position(n2)].marked = false;
 } 
 
-// Retruns true if the edge is marked.
+// Returns true if the edge is marked.
 template <class T>
 bool graph<T>::is_marked(nodeptr n1,nodeptr n2){
     if(!exist_edge(n1,n2)) return false;
@@ -435,7 +435,7 @@ void graph<T>::unmark_all_edges(){
     }
 }   
 
-//Retruns the number of edges of a node.
+//Returns the number of edges of a node.
 template <class T>
 int graph<T>::get_n_edges(nodeptr node) const{
     if(!exist_node(node)) return not_set;

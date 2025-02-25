@@ -26,8 +26,8 @@
         virtual bool contains(const T&) const = 0; //Searches if a value is contained.
         virtual position minimum() const = 0; //Returns the minimum value in the tree.
         virtual position maximum() const = 0; //Returns the maximum value of the tree.
-        virtual position predecessor(position) const = 0; //Retruns the predecessor of the node. (The previous node in the order).
-        virtual position successor(position) const = 0; //Retruns the successor of the node. (The next node in the order).
+        virtual position predecessor(position) const = 0; //Returns the predecessor of the node. (The previous node in the order).
+        virtual position successor(position) const = 0; //Returns the successor of the node. (The next node in the order).
  };
  
  #endif //ABSTRACT_BST_TREE

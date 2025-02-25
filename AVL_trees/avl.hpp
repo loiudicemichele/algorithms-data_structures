@@ -64,8 +64,8 @@ class AVL : public abstract_avl_tree<T, tree_node<T>*> {
         bool contains(const T&) const; //Searches if a value is contained.
         nodeptr minimum() const; //Returns the minimum value in the tree.
         nodeptr maximum() const; //Returns the maximum value of the tree.
-        nodeptr predecessor(nodeptr) const; //Retruns the predecessor of the node. (The previous node in the order).
-        nodeptr successor(nodeptr) const; //Retruns the successor of the node. (The next node in the order).
+        nodeptr predecessor(nodeptr) const; //Returns the predecessor of the node. (The previous node in the order).
+        nodeptr successor(nodeptr) const; //Returns the successor of the node. (The next node in the order).
         
         void write(const T&, nodeptr);//Sets the value of a node.
         T read(nodeptr) const; //Reads the value of a node.
@@ -401,7 +401,7 @@ typename AVL<T>::nodeptr AVL<T>::maximum(nodeptr node) const{
 } 
 
 
-//Retruns the predecessor of the node. (The previous node in the order).
+//Returns the predecessor of the node. (The previous node in the order).
 template <class T>
 typename AVL<T>::nodeptr AVL<T>::predecessor(nodeptr node) const{
     if(has_left_child(node)) return maximum(get_left_child(node));
@@ -409,7 +409,7 @@ typename AVL<T>::nodeptr AVL<T>::predecessor(nodeptr node) const{
     else return nullptr; //The node has the lowest value
 } 
 
-//Retruns the successor of the node. (The next node in the order).
+//Returns the successor of the node. (The next node in the order).
 template <class T>
 typename AVL<T>::nodeptr AVL<T>::successor(nodeptr node) const{
     if(has_right_child(node)) return minimum(get_right_child(node));

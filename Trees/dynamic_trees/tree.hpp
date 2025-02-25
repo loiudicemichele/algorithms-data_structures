@@ -225,7 +225,7 @@ bool tree<T>::last_sibling(nodeptr node) const{
     return !has_next_sibling(node);
 }
 
-//Deletes a subtree from the list.
+//Deletes a subtree from the tree.
 template <class T>
 void tree<T>::erase(nodeptr node){
     if(has_prev_sibling(node) && has_next_sibling(node)){
